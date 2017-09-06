@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Panel, Grid, Row, Col } from 'react-bootstrap'
+import { Panel, Grid, Row, Col, Alert } from 'react-bootstrap'
 import ThumbsUpIcon from 'react-icons/lib/fa/thumbs-o-up'
 import UserIcon from 'react-icons/lib/fa/user'
 import CalendarIcon from 'react-icons/lib/fa/calendar'
@@ -25,7 +25,7 @@ class PostFooter extends PureComponent {
   }
   render() {
     const post = this.props.post
-    const timeStamp = new Date(parseInt(post.timestamp))
+    const timeStamp = new Date(parseInt(post.timestamp, 10))
     return (<div>
       <CalendarIcon /> { timeStamp.toLocaleString() }
       <span className="pull-right"> {post.voteScore} <ThumbsUpIcon /></span>
@@ -77,7 +77,11 @@ class Posts extends PureComponent {
       <Grid>
         <Row className="show-grid">
           <Col xs={12} md={8}>
-            { this.props.posts.map(post => <Post key={ post.id } post= { post } />) }
+            <ol className="readable-posts">
+              { this.props.posts.map(post => <li key={ post.id }><Post post= { post } /></li>) }
+            </ol>
+            { !this.props.posts.length && <Alert bsStyle="danger">
+              <strong>Ahhh Snap!!!</strong> No posts found for this category...</Alert> }
           </Col>
           <Col xs={6} md={4}>Sorter will come here!</Col>
         </Row>

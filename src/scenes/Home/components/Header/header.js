@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import { Navbar, Nav, NavItem } from 'react-bootstrap'
 import ReadableIcon from 'react-icons/lib/md/library-books'
 import CategoryIcon from 'react-icons/lib/md/dvr'
 import './header.css'

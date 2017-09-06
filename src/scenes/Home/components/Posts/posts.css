@@ -1,9 +1,32 @@
-.readable-post .panel-heading {
-  color: #fe3201 !important;
-  border-color: #fe3001 !important;
+.readable-posts {
+  list-style: none;
+ }
+.readable-posts > li {
+  counter-increment: item;
+  margin-bottom: 5px;
+ }
+
+.readable-posts > li:before {
+  margin-left: -58px;
+  content: counter(item);
+  background: #f5f5f5;
+  border-radius: 100%;
+  border: solid 1px #fe3001;
+  color: #fe3201;
+  width: 1.5em;
+  font-size: 28px;
+  text-align: center;
+  font-family: monospace;
+  display: inline-block;
+  float: left;
 }
 
 .readable-post {
+  border-color: #fe3001 !important;
+}
+
+.readable-post .panel-heading {
+  color: #fe3201 !important;
   border-color: #fe3001 !important;
 }
 

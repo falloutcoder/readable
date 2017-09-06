@@ -1,0 +1,12 @@
+.readable-post .panel-heading {
+  color: #fe3201 !important;
+  border-color: #fe3001 !important;
+}
+
+.readable-post {
+  border-color: #fe3001 !important;
+}
+
+.readable-post__header > span {
+  color: #777;
+}

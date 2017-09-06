@@ -1,5 +1,53 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { Panel, Grid, Row, Col } from 'react-bootstrap'
+import ThumbsUpIcon from 'react-icons/lib/fa/thumbs-o-up'
+import UserIcon from 'react-icons/lib/fa/user'
+import CalendarIcon from 'react-icons/lib/fa/calendar'
+import './posts.css'
+
+class PostHeader extends PureComponent {
+  static propTypes = {
+    post: PropTypes.object
+  }
+  render() {
+    const post = this.props.post
+    return (<div className="readable-post__header">
+      { post.title }
+      <span className="pull-right"> <UserIcon /> { post.author }</span>
+    </div>)
+  }
+}
+
+class PostFooter extends PureComponent {
+  static propTypes = {
+    post: PropTypes.object
+  }
+  render() {
+    const post = this.props.post
+    const timeStamp = new Date(parseInt(post.timestamp))
+    return (<div>
+      <CalendarIcon /> { timeStamp.toLocaleString() }
+      <span className="pull-right"> {post.voteScore} <ThumbsUpIcon /></span>
+    </div>)
+  }
+}
+
+class Post extends PureComponent {
+  static propTypes = {
+    post: PropTypes.object
+  }
+
+  render() {
+    const post = this.props.post
+    return (<Panel header={<PostHeader post={ post } />}
+                   className="readable-post"
+                   footer={<PostFooter post={ post } />}
+                   bsStyle="default">
+              { post.body }</Panel>)
+  }
+
+}
 
 class Posts extends PureComponent {
   static propTypes = {
@@ -25,7 +73,16 @@ class Posts extends PureComponent {
   }
 
   render() {
-    return <ul>{ this.props.posts.map(post => <li key={ post.id }>{ post.title }</li>) }</ul>
+    return(
+      <Grid>
+        <Row className="show-grid">
+          <Col xs={12} md={8}>
+            { this.props.posts.map(post => <Post key={ post.id } post= { post } />) }
+          </Col>
+          <Col xs={6} md={4}>Sorter will come here!</Col>
+        </Row>
+      </Grid>
+    )
   }
 }
 

@@ -22,7 +22,7 @@ class Header extends PureComponent {
       <Navbar className="readable-header">
         <Navbar.Header>
           <Navbar.Brand>
-            <a onClick={ () => this.props.selectCategory(null) }
+            <a onClick={ this.props.loadCategories }
                className="readable-header__title">
                 Readable<ReadableIcon />
             </a>

@@ -7,13 +7,13 @@ function mapStateToProps(state) {
   return { categories: all, selected }
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
+function mapDispatchToProps(dispatch) {
   return {
     loadCategories() {
-      dispatch(loadAllCategories());
+      dispatch(loadAllCategories())
     },
     selectCategory(index) {
-      dispatch(selectCategory(index));
+      dispatch(selectCategory(index))
     }
   }
 }

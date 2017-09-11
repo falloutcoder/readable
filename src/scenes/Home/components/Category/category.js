@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { Navbar, Nav, NavItem } from 'react-bootstrap'
 import ReadableIcon from 'react-icons/lib/md/library-books'
 import CategoryIcon from 'react-icons/lib/md/dvr'
-import './header.css'
+import './category.css'
 
-class Header extends PureComponent {
+class Category extends PureComponent {
   static propTypes = {
     category: PropTypes.array,
     selected: PropTypes.number,
@@ -42,4 +42,4 @@ class Header extends PureComponent {
   }
 }
 
-export default Header
+export default Category

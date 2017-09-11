@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { loadAllCategories, selectCategory }  from '../../../../data/categories/actions';
-import Header from './header'
+import { loadAllCategories, selectCategory }  from './actions';
+import Header from './category'
 
 function mapStateToProps(state) {
-  const { all, selected } = state.data.categories
+  const { all, selected } = state.scenes.home.categories
   return { categories: all, selected }
 }
 

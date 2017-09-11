@@ -4,6 +4,7 @@ import { Panel, Grid, Row, Col, Alert } from 'react-bootstrap'
 import ThumbsUpIcon from 'react-icons/lib/fa/thumbs-o-up'
 import UserIcon from 'react-icons/lib/fa/user'
 import CalendarIcon from 'react-icons/lib/fa/calendar'
+import Sorter from './Sorter/sorterContainer'
 import './posts.css'
 
 class PostHeader extends PureComponent {
@@ -83,7 +84,7 @@ class Posts extends PureComponent {
             { !this.props.posts.length && <Alert bsStyle="danger">
               <strong>Ahhh Snap!!!</strong> No posts found for this category...</Alert> }
           </Col>
-          <Col xs={6} md={4}>Sorter will come here!</Col>
+          <Col xs={6} md={4}><Sorter /></Col>
         </Row>
       </Grid>
     )

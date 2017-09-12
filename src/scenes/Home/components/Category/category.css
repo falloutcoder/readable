@@ -1,5 +1,5 @@
 a.readable-header__title:hover {
-	color: #fe3201 !important;
+  color: #fe3201 !important;
 }
 
 .readable-header__categories a:hover {
@@ -7,5 +7,5 @@ a.readable-header__title:hover {
 }
 
 .readable-header__categories li.active a {
-	color: #fe3201 !important;
+  color: #fe3201 !important;
 }

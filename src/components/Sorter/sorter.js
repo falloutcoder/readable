@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap'
 import ArrowUpIcon from 'react-icons/lib/fa/angle-double-up'
 import ArrowDownIcon from 'react-icons/lib/fa/angle-double-down'
@@ -8,6 +9,15 @@ import ThumbsDownIcon from 'react-icons/lib/fa/thumbs-o-down'
 import './sorter.css'
 
 class Sorter extends Component {
+  static propTypes = {
+    sortOrder: PropTypes.string,
+    sortBy: PropTypes.string,
+    sortInDescending: PropTypes.func,
+    sortInAscending: PropTypes.func,
+    sortByVote: PropTypes.func,
+    sortByDate: PropTypes.func
+  }
+
   render() {
     return (
       <div className="readable-sorter">

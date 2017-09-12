@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Panel, Grid, Row, Col, Alert } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import ThumbsUpIcon from 'react-icons/lib/fa/thumbs-o-up'
 import UserIcon from 'react-icons/lib/fa/user'
 import CalendarIcon from 'react-icons/lib/fa/calendar'
@@ -14,7 +15,7 @@ class PostHeader extends PureComponent {
   render() {
     const post = this.props.post
     return (<div className="readable-post__header">
-      { post.title }
+      <Link to={ `/posts/${ post.id }` }>{ post.title }</Link>
       <span className="pull-right"> <UserIcon /> { post.author }</span>
     </div>)
   }

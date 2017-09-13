@@ -12,9 +12,9 @@ const postsReducer = (state, action) => {
 }
 
 const initialState = { 'all': [], sorter: sorterInitialState }
+
 export const reducer = (state=initialState, action) => {
   return {
-    ...state,
     all: postsReducer(state.all, action),
     sorter: sorterReducer(state.sorter, action)
   }

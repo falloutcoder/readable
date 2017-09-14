@@ -1,7 +1,7 @@
 import { LOAD_ALL_POSTS, LOAD_ALL_POSTS_FOR_CATEGORY } from './actions'
 import { reducer as sorterReducer } from './Sorter/reducer'
 
-const postsReducer = (state, action) => {
+const postsReducer = (state=[], action) => {
   switch (action.type) {
     case LOAD_ALL_POSTS:
     case LOAD_ALL_POSTS_FOR_CATEGORY:
@@ -11,9 +11,7 @@ const postsReducer = (state, action) => {
   }
 }
 
-const initialState = { 'all': [], 'sorter': {} }
-
-export const reducer = (state=initialState, action) => {
+export const reducer = (state={}, action) => {
   return {
     'all': postsReducer(state.all, action),
     'sorter': sorterReducer(state.sorter, action)

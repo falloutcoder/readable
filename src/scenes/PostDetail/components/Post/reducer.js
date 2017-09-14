@@ -4,9 +4,7 @@ import {
   UP_VOTE_POST } from './actions'
 import commentsReducer from './Comments/reducer'
 
-const initialState = { 'comments': {} }
-
-export const reducer = (state=initialState, action) => {
+export const reducer = (state={}, action) => {
   switch (action.type) {
     case DOWN_VOTE_POST:
     case LOAD_POST:

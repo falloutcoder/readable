@@ -1,16 +1,22 @@
 import { connect } from 'react-redux';
+import { sortUtil } from '../../../../../utils'
 import { loadComments }  from './actions';
 import Comments from './comments'
 
 function mapStateToProps(state) {
-  const comments = state.scenes.postDetail.post
+  const { all, sorter } = state.scenes.postDetail.post.comments
+  const comments = Object.assign([], all)
+  comments.sort(sortUtil(sorter.sortBy === 'date' ? 'timestamp': 'voteScore'))
+  if (sorter.sortOrder === 'descending') {
+    comments.reverse()
+  }
   return { comments }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, ownProps) {
   return {
-    load(id) {
-      dispatch(loadComments(id))
+    load() {
+      dispatch(loadComments(ownProps.id))
     },
   }
 }

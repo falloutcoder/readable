@@ -5,13 +5,19 @@
   text-align: center;
 }
 
-.readable-post-user, .readable-post-date {
+.readable-post-user, .readable-post-date, .readable-post-comments {
   color: #fe3001;
   font-weight: bold;
   font-size: 16px;
 }
 
-.readable-post-user span, .readable-post-date span, .readable-post-votes span {
+.readable-post-user span, .readable-post-date span, .readable-post-votes span, .readable-post-comments span {
   color: #333333;
   font-family: monospace;
+}
+
+.readable-postdetail__post {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: solid 2px #fe3001;
 }

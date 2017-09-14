@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { formatTimeStamp } from '../../../../utils'
 import PropTypes from 'prop-types'
 import { Panel, Grid, Row, Col, Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -27,9 +28,8 @@ class PostFooter extends PureComponent {
   }
   render() {
     const post = this.props.post
-    const timeStamp = new Date(parseInt(post.timestamp, 10))
     return (<div>
-      <CalendarIcon /> { timeStamp.toLocaleString() }
+      <CalendarIcon /> { formatTimeStamp(post.timestamp) }
       <span className="pull-right"> {post.voteScore} <ThumbsUpIcon /></span>
     </div>)
   }

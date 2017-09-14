@@ -2,9 +2,9 @@ import {
   LOAD_POST,
   DOWN_VOTE_POST,
   UP_VOTE_POST } from './actions'
-import { commentsReducer } from './Comments/reducer'
+import commentsReducer from './Comments/reducer'
 
-const initialState = { 'comments': [] }
+const initialState = { 'comments': {} }
 
 export const reducer = (state=initialState, action) => {
   switch (action.type) {

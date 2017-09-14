@@ -11,7 +11,7 @@ const postsReducer = (state, action) => {
   }
 }
 
-const initialState = { 'all': [], sorter: sorterInitialState }
+const initialState = { 'all': [], sorter: {} }
 
 export const reducer = (state=initialState, action) => {
   return {

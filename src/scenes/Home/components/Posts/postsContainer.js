@@ -1,20 +1,7 @@
 import { connect } from 'react-redux'
+import { sortUtil } from '../../../../utils'
 import { loadAllPosts, loadAllPostsForCategory } from './actions'
 import Posts from './posts'
-
-const sortUtil = (field) => {
-  return (post1,post2) => {
-    const p1 = post1[field]
-    const p2 = post2[field]
-    if (p1 < p2) {
-      return -1
-    }
-    if (p1 > p2) {
-      return 1
-    }
-    return 0
-  }
-}
 
 function mapStateToProps(state) {
   const categories = state.scenes.home.categories

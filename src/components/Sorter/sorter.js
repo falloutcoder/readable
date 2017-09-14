@@ -22,7 +22,6 @@ class Sorter extends Component {
     return (
       <div className="readable-sorter">
         <div className="well">
-          <h4>Sort Order || Sort By</h4>
           <ButtonToolbar>
             <ButtonGroup>
               <Button className={ this.props.sortOrder === "descending" && "active"}

@@ -1,8 +1,8 @@
 import {
-  SORT_POSTS_BY_DATE,
-  SORT_POSTS_BY_VOTES,
-  SORT_POSTS_ASCENDING,
-  SORT_POSTS_DESCENDING } from './actions'
+  SORT_COMMENTS_BY_DATE,
+  SORT_COMMENTS_BY_VOTES,
+  SORT_COMMENTS_ASCENDING,
+  SORT_COMMENTS_DESCENDING } from './actions'
 
 const DATE = 'date'
 const VOTES = 'votes'
@@ -16,13 +16,13 @@ export const initialState = {
 
 export const reducer = (state=initialState, action) => {
   switch (action.type) {
-    case SORT_POSTS_BY_DATE:
+    case SORT_COMMENTS_BY_DATE:
       return { ...state, sortBy: DATE }
-    case SORT_POSTS_BY_VOTES:
+    case SORT_COMMENTS_BY_VOTES:
       return { ...state, sortBy: VOTES }
-    case SORT_POSTS_ASCENDING:
+    case SORT_COMMENTS_ASCENDING:
       return { ...state, sortOrder: ASCENDING }
-    case SORT_POSTS_DESCENDING:
+    case SORT_COMMENTS_DESCENDING:
       return { ...state, sortOrder: DESCENDING }
     default:
       return state

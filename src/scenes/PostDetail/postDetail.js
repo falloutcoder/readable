@@ -5,7 +5,7 @@ import Post from './components/Post/postContainer'
 class PostDetail extends Component {
   render() {
     return (
-      <div className="App">
+      <div>
         <Header />
         <Post id={ this.props.match.params.id } />
       </div>

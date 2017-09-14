@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Col, Grid, Row, PageHeader, Jumbotron, ButtonGroup, ButtonToolbar, Button } from 'react-bootstrap'
+import { Col, Grid, Row, PageHeader, Jumbotron, ButtonGroup, Button } from 'react-bootstrap'
 import ThumbsUpIcon from 'react-icons/lib/fa/thumbs-o-up'
 import ThumbsUpDarkIcon from 'react-icons/lib/fa/thumbs-up'
 import ThumbsDownIcon from 'react-icons/lib/fa/thumbs-o-down'

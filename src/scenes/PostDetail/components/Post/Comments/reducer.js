@@ -10,7 +10,7 @@ const commentsReducer = (state, action) => {
   }
 }
 
-const initialState = { 'all': [], sorter: {} }
+const initialState = { 'all': [], 'sorter': {} }
 
 const reducer = (state=initialState, action) => {
   return {

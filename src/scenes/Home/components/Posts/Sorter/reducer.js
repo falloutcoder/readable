@@ -9,7 +9,7 @@ const VOTES = 'votes'
 const ASCENDING = 'ascending'
 const DESCENDING = 'descending'
 
-export const initialState = {
+const initialState = {
   sortBy: DATE,
   sortOrder: ASCENDING
 }

@@ -1,4 +1,3 @@
-import { loadComments } from './api'
 import { LOAD_COMMENTS } from './actions'
 
 export const commentsReducer = (state, action) => {

@@ -1,0 +1,17 @@
+.readable-post-votes {
+  font-size: 28px;
+  color: #fe3001;
+  font-weight: bold;
+  text-align: center;
+}
+
+.readable-post-user, .readable-post-date {
+  color: #fe3001;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.readable-post-user span, .readable-post-date span, .readable-post-votes span {
+  color: #333333;
+  font-family: monospace;
+}

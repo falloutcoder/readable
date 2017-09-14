@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { loadPost }  from './actions';
+import { loadPost, upVotePost, downVotePost }  from './actions';
 import Post from './post'
 
 function mapStateToProps(state) {
@@ -7,10 +7,16 @@ function mapStateToProps(state) {
   return { post }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, ownProps) {
   return {
-    load(id) {
-      dispatch(loadPost(id))
+    load() {
+      dispatch(loadPost(ownProps.id))
+    },
+    upVote() {
+      dispatch(upVotePost(ownProps.id))
+    },
+    downVote() {
+      dispatch(downVotePost(ownProps.id))
     },
   }
 }

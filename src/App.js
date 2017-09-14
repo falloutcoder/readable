@@ -6,7 +6,7 @@ import {
   Switch} from 'react-router-dom'
 import store from './store';
 import Home from './scenes/Home/home'
-import PostDetail from './scenes/PostDetail/post'
+import PostDetail from './scenes/PostDetail/postDetail'
 
 class App extends Component {
   render() {

@@ -45,8 +45,7 @@ class Post extends PureComponent {
     return (<Panel header={<PostHeader post={ post } />}
                    className="readable-post"
                    footer={<PostFooter post={ post } />}
-                   bsStyle="default">
-              { post.body }</Panel>)
+                   bsStyle="default"></Panel>)
   }
 
 }

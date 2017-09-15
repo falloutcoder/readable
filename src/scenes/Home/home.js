@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from './components/Category/categoryContainer'
-import Posts from './components/Posts/postsContainer'
+import Header from './components/Category/categoryContainer';
+import Posts from './components/Posts/postsContainer';
 
 class App extends Component {
   render() {

@@ -1,20 +1,20 @@
-import { reducer as sorterReducer } from './Sorter/reducer'
-import { LOAD_COMMENTS } from './actions'
+import { reducer as sorterReducer } from './Sorter/reducer';
+import { LOAD_COMMENTS } from './actions';
 
-const commentsReducer = (state=[], action) => {
+const commentsReducer = (state = [], action) => {
   switch (action.type) {
     case LOAD_COMMENTS:
-      return action.payload
+      return action.payload;
     default:
-      return state
+      return state;
   }
-}
+};
 
-const reducer = (state={}, action) => {
+const reducer = (state = {}, action) => {
   return {
-    'all': commentsReducer(state.all, action),
-    'sorter': sorterReducer(state.sorter, action)
-  }
-}
+    all: commentsReducer(state.all, action),
+    sorter: sorterReducer(state.sorter, action),
+  };
+};
 
-export default reducer
+export default reducer;

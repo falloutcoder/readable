@@ -1,32 +1,33 @@
-import { connect } from 'react-redux'
-import Sorter from '../../../../../../components/Sorter/sorter'
+import { connect } from 'react-redux';
+import Sorter from '../../../../../../components/Sorter/sorter';
 import {
   sortCommentsByVote,
   sortCommentsByDate,
   sortCommentsInAscending,
-  sortCommentsInDescending } from './actions'
+  sortCommentsInDescending,
+} from './actions';
 
 function mapStateToProps(state) {
-  const sorter = state.scenes.postDetail.post.comments.sorter
-  const { sortBy, sortOrder } = sorter
-  return { sortBy, sortOrder }
+  const sorter = state.scenes.postDetail.post.comments.sorter;
+  const { sortBy, sortOrder } = sorter;
+  return { sortBy, sortOrder };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     sortByVote() {
-      dispatch(sortCommentsByVote())
+      dispatch(sortCommentsByVote());
     },
     sortByDate() {
-      dispatch(sortCommentsByDate())
+      dispatch(sortCommentsByDate());
     },
     sortInAscending() {
-      dispatch(sortCommentsInAscending())
+      dispatch(sortCommentsInAscending());
     },
     sortInDescending() {
-      dispatch(sortCommentsInDescending())
+      dispatch(sortCommentsInDescending());
     },
-  }
+  };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sorter)
+export default connect(mapStateToProps, mapDispatchToProps)(Sorter);

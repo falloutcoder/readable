@@ -6,4 +6,4 @@ import { reducer as categoriesReducer } from './components/Category/reducer';
 export const reducer = combineReducers({
   posts: postsReducer,
   categories: categoriesReducer,
-})
+});

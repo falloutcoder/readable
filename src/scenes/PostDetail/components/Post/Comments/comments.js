@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react'
-import Comment from './Comment/comment'
-import Sorter from './Sorter/sorterContainer'
-import './comments.css'
+import React, { PureComponent } from 'react';
+import Comment from './Comment/comment';
+import Sorter from './Sorter/sorterContainer';
+import './comments.css';
 
 class Comments extends PureComponent {
   componentDidMount() {
-    this.props.load()
+    this.props.load();
   }
 
   render() {
@@ -15,12 +15,13 @@ class Comments extends PureComponent {
           <span>Comments</span>
           <Sorter />
         </div>
-        { this.props.comments && this.props.comments.map(comment =>
-          <Comment comment={ comment } key={ comment.id }/>)
-        }
+        {this.props.comments &&
+          this.props.comments.map(comment => (
+            <Comment comment={comment} key={comment.id} />
+          ))}
       </div>
     );
   }
 }
 
-export default Comments
+export default Comments;

@@ -1,6 +1,6 @@
 import { reducer as sorterReducer } from './Sorter/reducer';
 import { LOAD_COMMENTS } from './actions';
-import { UP_VOTE_COMMENT, DOWN_VOTE_COMMENT } from './Comment/actions';
+import { UP_VOTE_COMMENT, DOWN_VOTE_COMMENT, DELETE_COMMENT } from './Comment/actions';
 
 const commentsReducer = (state = [], action) => {
   switch (action.type) {
@@ -8,6 +8,7 @@ const commentsReducer = (state = [], action) => {
       return action.payload;
     case UP_VOTE_COMMENT:
     case DOWN_VOTE_COMMENT:
+    case DELETE_COMMENT:
       return state
         .filter(comment => comment.id !== action.payload.id)
         .concat(action.payload);

@@ -5,7 +5,7 @@ import Comments from './comments';
 
 function mapStateToProps(state) {
   const { all, sorter } = state.scenes.postDetail.post.comments;
-  const comments = Object.assign([], all);
+  const comments = all.filter(comment => !comment.deleted);
   comments.sort(sortUtil(sorter.sortBy === 'date' ? 'timestamp' : 'voteScore'));
   if (sorter.sortOrder === 'descending') {
     comments.reverse();

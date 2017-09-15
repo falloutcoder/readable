@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { upVoteComment, downVoteComment } from './actions';
+import { upVoteComment, downVoteComment, removeComment } from './actions';
 import Comment from './comment';
 
 function mapDispatchToProps(dispatch, ownProps) {
@@ -9,6 +9,9 @@ function mapDispatchToProps(dispatch, ownProps) {
     },
     downVote() {
       dispatch(downVoteComment(ownProps.comment.id));
+    },
+    delete() {
+      dispatch(removeComment(ownProps.comment.id));
     },
   };
 }

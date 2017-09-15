@@ -7,6 +7,7 @@ import ThumbsDownIcon from 'react-icons/lib/fa/thumbs-o-down';
 import ThumbsDownDarkIcon from 'react-icons/lib/fa/thumbs-down';
 import UserIcon from 'react-icons/lib/fa/user';
 import CalendarIcon from 'react-icons/lib/fa/calendar';
+import TrashIcon from 'react-icons/lib/fa/trash-o';
 import { formatTimeStamp } from '../../../../../../utils';
 import './comment.css';
 
@@ -17,6 +18,7 @@ class CommentHeader extends PureComponent {
     votes: PropTypes.number,
     upVote: PropTypes.func,
     downVote: PropTypes.func,
+    delete: PropTypes.func,
   };
 
   render() {
@@ -41,6 +43,9 @@ class CommentHeader extends PureComponent {
           <Button onClick={this.props.downVote}>
             <ThumbsDownDarkIcon />
           </Button>
+          <button onClick={this.props.delete}>
+            <TrashIcon />
+          </button>
         </ButtonGroup>
       </div>
     );
@@ -52,6 +57,7 @@ class Comment extends PureComponent {
     comment: PropTypes.object,
     upVote: PropTypes.func,
     downVote: PropTypes.func,
+    delete: PropTypes.func,
   };
 
   render() {
@@ -66,6 +72,7 @@ class Comment extends PureComponent {
             votes={comment.voteScore}
             upVote={this.props.upVote}
             downVote={this.props.downVote}
+            delete={this.props.delete}
           />
         }
         bsStyle="default"

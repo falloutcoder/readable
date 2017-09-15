@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
-import { loadPost, upVotePost, downVotePost } from './actions';
+import { loadPost } from './actions';
 import Post from './post';
+import PostContainer from '../../../../components/Post/post'
 
 function mapStateToProps(state) {
   const post = state.scenes.postDetail.post;
@@ -12,13 +13,7 @@ function mapDispatchToProps(dispatch, ownProps) {
     load() {
       dispatch(loadPost(ownProps.id));
     },
-    upVote() {
-      dispatch(upVotePost(ownProps.id));
-    },
-    downVote() {
-      dispatch(downVotePost(ownProps.id));
-    },
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Post);
+export default PostContainer(connect(mapStateToProps, mapDispatchToProps)(Post));

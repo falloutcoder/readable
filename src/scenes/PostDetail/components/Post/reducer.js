@@ -1,4 +1,5 @@
-import { LOAD_POST, DOWN_VOTE_POST, UP_VOTE_POST } from './actions';
+import { DOWN_VOTE_POST, UP_VOTE_POST } from '../../../../components/Post/actions'
+import { LOAD_POST } from './actions';
 import commentsReducer from './Comments/reducer';
 
 export const reducer = (state = {}, action) => {

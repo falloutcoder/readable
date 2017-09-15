@@ -1,25 +1,30 @@
 import React, { PureComponent } from 'react';
-import { formatTimeStamp } from '../../../../../utils';
 import PropTypes from 'prop-types';
-import { Panel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Panel, ButtonGroup, Button } from 'react-bootstrap';
 import ThumbsUpIcon from 'react-icons/lib/fa/thumbs-o-up';
+import ThumbsUpDarkIcon from 'react-icons/lib/fa/thumbs-up';
+import ThumbsDownDarkIcon from 'react-icons/lib/fa/thumbs-down';
 import UserIcon from 'react-icons/lib/fa/user';
 import CalendarIcon from 'react-icons/lib/fa/calendar';
+import PostContainer from '../../../../../components/Post/post';
+import { formatTimeStamp } from '../../../../../utils';
 import './post.css';
 
 class PostHeader extends PureComponent {
   static propTypes = {
-    post: PropTypes.object,
+    id: PropTypes.string,
+    title: PropTypes.string,
+    author: PropTypes.string,
+    voteScore: PropTypes.number,
   };
   render() {
-    const post = this.props.post;
     return (
       <div className="readable-post__header">
-        <Link to={`/posts/${post.id}`}>{post.title}</Link>
+        <Link to={`/posts/${this.props.id}`}>{this.props.title}</Link>
         <span className="pull-right">
-          {' '}
-          <UserIcon /> {post.author}
+          <UserIcon /> {this.props.author}
+          <ThumbsUpIcon /> {this.props.voteScore}
         </span>
       </div>
     );
@@ -28,17 +33,22 @@ class PostHeader extends PureComponent {
 
 class PostFooter extends PureComponent {
   static propTypes = {
-    post: PropTypes.object,
+    timestamp: PropTypes.number,
+    upVote: PropTypes.func,
+    downVote: PropTypes.func,
   };
   render() {
-    const post = this.props.post;
     return (
       <div>
-        <CalendarIcon /> {formatTimeStamp(post.timestamp)}
-        <span className="pull-right">
-          {' '}
-          {post.voteScore} <ThumbsUpIcon />
-        </span>
+        <CalendarIcon /> {formatTimeStamp(this.props.timestamp)}
+        <ButtonGroup className="pull-right">
+          <Button onClick={this.props.upVote}>
+            <ThumbsUpDarkIcon />
+          </Button>
+          <Button onClick={this.props.downVote}>
+            <ThumbsDownDarkIcon />
+          </Button>
+        </ButtonGroup>
       </div>
     );
   }
@@ -47,19 +57,34 @@ class PostFooter extends PureComponent {
 class Post extends PureComponent {
   static propTypes = {
     post: PropTypes.object,
+    upVote: PropTypes.func,
+    downVote: PropTypes.func,
   };
 
   render() {
     const post = this.props.post;
     return (
       <Panel
-        header={<PostHeader post={post} />}
+        header={
+          <PostHeader
+            title={post.title}
+            id={post.id}
+            voteScore={post.voteScore}
+            author={post.author}
+          />
+        }
         className="readable-post"
-        footer={<PostFooter post={post} />}
+        footer={
+          <PostFooter
+            timestamp={post.timestamp}
+            upVote={this.props.upVote}
+            downVote={this.props.downVote}
+          />
+        }
         bsStyle="default"
       />
     );
   }
 }
 
-export default Post;
+export default PostContainer(Post);

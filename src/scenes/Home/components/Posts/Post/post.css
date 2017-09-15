@@ -1,12 +1,16 @@
 .readable-post {
-    border-color: #fe3001 !important;
+  border-color: #fe3001 !important;
 }
 
 .readable-post .panel-heading {
-    color: #fe3201 !important;
-    border-color: #fe3001 !important;
+  color: #fe3201 !important;
+  border-color: #fe3001 !important;
 }
 
 .readable-post__header > span {
-    color: #777;
+  color: #777;
+}
+
+.readable-post .panel-footer {
+  line-height: 30px;
 }

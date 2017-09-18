@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import {
+  Alert,
   Col,
   Grid,
   Row,
@@ -15,30 +17,39 @@ import ThumbsDownDarkIcon from 'react-icons/lib/fa/thumbs-down';
 import UserIcon from 'react-icons/lib/fa/user';
 import CalendarIcon from 'react-icons/lib/fa/calendar';
 import CommentsIcon from 'react-icons/lib/fa/comments-o';
+import TrashIcon from 'react-icons/lib/fa/trash-o';
 import { formatTimeStamp } from '../../../../utils';
 import Comments from './Comments/commentsContainer';
 import './post.css';
 
 class PostHeader extends PureComponent {
+  static propTypes = {
+    title: PropTypes.string,
+    category: PropTypes.string,
+    author: PropTypes.string,
+    timestamp: PropTypes.number,
+    comments: PropTypes.object,
+  };
+
   render() {
-    const { post } = this.props;
+    const props = this.props;
     return (
       <div>
         <PageHeader>
-          {post.title}
-          <small> ({post.category})</small>
+          {props.title}
+          <small> ({props.category})</small>
         </PageHeader>
         <div className="readable-post-user">
           <UserIcon />
-          <span> {post.author}</span>
+          <span> {props.author}</span>
         </div>
         <div className="readable-post-date">
           <CalendarIcon />
-          <span> {formatTimeStamp(post.timestamp)}</span>
+          <span> {formatTimeStamp(props.timestamp)}</span>
         </div>
         <div className="readable-post-comments">
           <CommentsIcon />
-          <span> {post.comments.all && post.comments.all.length} </span>
+          <span> {props.comments.all && props.comments.all.length} </span>
         </div>
       </div>
     );
@@ -46,18 +57,38 @@ class PostHeader extends PureComponent {
 }
 
 class Post extends PureComponent {
+  static propTypes = {
+    post: PropTypes.object,
+    load: PropTypes.func,
+    delete: PropTypes.func,
+  };
+
   componentDidMount() {
     this.props.load();
   }
 
   render() {
     const { post } = this.props;
+    if (post.deleted !== false) {
+      return (
+        <Alert bsStyle="danger">
+          <strong>Ahhh Snap!!!</strong> This post is deleted or no longer
+          available...
+        </Alert>
+      );
+    }
     return (
       <div className="readable-postdetail">
         <Grid>
           <Row>
             <Col md={10} mdOffset={2}>
-              <PostHeader post={post} />
+              <PostHeader
+                title={post.title}
+                author={post.author}
+                category={post.category}
+                timestamp={post.timestamp}
+                comments={post.comments}
+              />
             </Col>
           </Row>
 
@@ -80,6 +111,9 @@ class Post extends PureComponent {
                 </Button>
                 <Button onClick={this.props.downVote}>
                   <ThumbsDownDarkIcon />
+                </Button>
+                <Button onClick={this.props.delete}>
+                  <TrashIcon />
                 </Button>
               </ButtonGroup>
             </Col>

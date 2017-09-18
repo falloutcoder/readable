@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { loadPost } from './actions';
+import { loadPost, removePost } from './actions';
 import Post from './post';
-import PostContainer from '../../../../components/Post/post'
+import PostContainer from '../../../../components/Post/post';
 
 function mapStateToProps(state) {
   const post = state.scenes.postDetail.post;
@@ -13,7 +13,12 @@ function mapDispatchToProps(dispatch, ownProps) {
     load() {
       dispatch(loadPost(ownProps.id));
     },
+    delete() {
+      dispatch(removePost(ownProps.id));
+    },
   };
 }
 
-export default PostContainer(connect(mapStateToProps, mapDispatchToProps)(Post));
+export default PostContainer(
+  connect(mapStateToProps, mapDispatchToProps)(Post),
+);

@@ -43,9 +43,9 @@ class CommentHeader extends PureComponent {
           <Button onClick={this.props.downVote}>
             <ThumbsDownDarkIcon />
           </Button>
-          <button onClick={this.props.delete}>
+          <Button onClick={this.props.delete}>
             <TrashIcon />
-          </button>
+          </Button>
         </ButtonGroup>
       </div>
     );

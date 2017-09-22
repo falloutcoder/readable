@@ -7,7 +7,7 @@ function mapStateToProps(state) {
   const categories = state.scenes.home.categories;
   const selectedCategory = categories.all[categories.selected];
   const { all, sorter } = state.scenes.home.posts;
-  const posts = Object.assign([], all);
+  const posts = all.filter(post => !post.deleted);
   posts.sort(sortUtil(sorter.sortBy === 'date' ? 'timestamp' : 'voteScore'));
   if (sorter.sortOrder === 'descending') {
     posts.reverse();

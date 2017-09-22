@@ -1,9 +1,16 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Comment from './Comment/commentContainer';
 import Sorter from './Sorter/sorterContainer';
 import './comments.css';
 
 class Comments extends PureComponent {
+  static propTypes = {
+    comments: PropTypes.array,
+    load: PropTypes.func,
+    add: PropTypes.func,
+  };
+
   componentDidMount() {
     this.props.load();
   }

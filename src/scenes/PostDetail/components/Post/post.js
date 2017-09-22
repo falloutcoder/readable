@@ -71,10 +71,12 @@ class Post extends PureComponent {
     const { post } = this.props;
     if (post.deleted !== false) {
       return (
-        <Alert bsStyle="danger">
-          <strong>Ahhh Snap!!!</strong> This post is deleted or no longer
-          available...
-        </Alert>
+        <div className="container">
+          <Alert bsStyle="danger">
+            <strong>Ahhh Snap!!!</strong> This post is deleted or no longer
+            available...
+          </Alert>
+        </div>
       );
     }
     return (

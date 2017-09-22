@@ -11,10 +11,10 @@ export const castVoteToComment = (id, option) =>
     body: JSON.stringify({ option }),
   }).then(res => res.json());
 
-export const deleteComment = (id) =>
+export const deleteComment = id =>
   fetch(`${api}/comments/${id}`, {
     method: 'DELETE',
     headers: {
       ...headers,
     },
-  }).then(res => res.json())
+  }).then(res => res.json());

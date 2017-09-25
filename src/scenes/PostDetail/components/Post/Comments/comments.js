@@ -10,6 +10,7 @@ class Comments extends PureComponent {
     comments: PropTypes.array,
     load: PropTypes.func,
     add: PropTypes.func,
+    update: PropTypes.func,
   };
 
   componentDidMount() {
@@ -25,7 +26,11 @@ class Comments extends PureComponent {
           <AddComment add={this.props.add} />
         </div>
         {this.props.comments.map(comment => (
-          <Comment comment={comment} key={comment.id} />
+          <Comment
+            comment={comment}
+            key={comment.id}
+            update={this.props.update}
+          />
         ))}
       </div>
     );

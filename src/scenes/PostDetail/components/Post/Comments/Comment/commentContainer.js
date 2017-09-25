@@ -1,6 +1,17 @@
 import { connect } from 'react-redux';
-import { upVoteComment, downVoteComment, removeComment } from './actions';
+import {
+  upVoteComment,
+  downVoteComment,
+  removeComment,
+  openEditCommentModal,
+  closeEditCommentModal,
+} from './actions';
 import Comment from './comment';
+
+function mapStateToProps(state, ownProps) {
+  const { editCommentModal } = state.scenes.postDetail.post.comments;
+  return { isEditMode: editCommentModal === ownProps.comment.id };
+}
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
@@ -13,7 +24,13 @@ function mapDispatchToProps(dispatch, ownProps) {
     delete() {
       dispatch(removeComment(ownProps.comment.id));
     },
+    openEditModal() {
+      dispatch(openEditCommentModal(ownProps.comment.id));
+    },
+    closeEditModal() {
+      dispatch(closeEditCommentModal());
+    },
   };
 }
 
-export default connect(null, mapDispatchToProps)(Comment);
+export default connect(mapStateToProps, mapDispatchToProps)(Comment);

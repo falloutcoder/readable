@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { sortUtil } from '../../../../../utils';
-import { loadComments, addComment } from './actions';
+import { loadComments, addComment, updateComment } from './actions';
 import Comments from './comments';
 
 function mapStateToProps(state) {
@@ -20,6 +20,9 @@ function mapDispatchToProps(dispatch, ownProps) {
     },
     add(body) {
       dispatch(addComment(ownProps.id, body));
+    },
+    update(id, body) {
+      dispatch(updateComment(id, body));
     },
   };
 }

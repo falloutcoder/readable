@@ -20,3 +20,13 @@ export const addCommentToPost = (id, body) =>
       timestamp: Date.now(),
     }),
   }).then(res => res.json());
+
+export const editComment = (id, body) =>
+  fetch(`${api}/comments/${id}`, {
+    method: 'PUT',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ ...body, timestamp: Date.now() }),
+  }).then(res => res.json());

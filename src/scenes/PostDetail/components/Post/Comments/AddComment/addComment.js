@@ -19,7 +19,7 @@ export default class AddComment extends PureComponent {
     add: PropTypes.func,
   };
 
-  onSubmit = f => {
+  submit = f => {
     this.props.add({
       author: f.target.author.value,
       body: f.target.comment.value,
@@ -42,7 +42,7 @@ export default class AddComment extends PureComponent {
               Add Comment To Post
             </Modal.Title>
           </Modal.Header>
-          <Form horizontal onSubmit={this.onSubmit}>
+          <Form horizontal onSubmit={this.submit}>
             <Modal.Body>
               <FormGroup controlId="formHorizontalEmail">
                 <Col sm={2}>Author</Col>

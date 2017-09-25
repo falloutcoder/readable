@@ -11,7 +11,7 @@ import {
 } from 'react-bootstrap';
 import PlusIcon from 'react-icons/lib/fa/plus-square-o';
 
-export default class AddComment extends PureComponent {
+class AddComment extends PureComponent {
   static propTypes = {
     isVisible: PropTypes.bool,
     open: PropTypes.func,
@@ -81,3 +81,5 @@ export default class AddComment extends PureComponent {
     );
   }
 }
+
+export default AddComment;

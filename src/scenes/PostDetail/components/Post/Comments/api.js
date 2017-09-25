@@ -28,5 +28,5 @@ export const editComment = (id, body) =>
       ...headers,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ ...body, timestamp: Date.now() }),
+    body: JSON.stringify({ ...body }),
   }).then(res => res.json());

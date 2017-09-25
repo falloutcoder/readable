@@ -1,5 +1,11 @@
 import { connect } from 'react-redux';
-import { loadPost, removePost } from './actions';
+import {
+  loadPost,
+  removePost,
+  updatePost,
+  openEditPostModal,
+  closeEditPostModal,
+} from './actions';
 import Post from './post';
 import PostContainer from '../../../../components/Post/post';
 
@@ -15,6 +21,15 @@ function mapDispatchToProps(dispatch, ownProps) {
     },
     delete() {
       dispatch(removePost(ownProps.id));
+    },
+    update(body) {
+      dispatch(updatePost(ownProps.id, body));
+    },
+    openEditModal() {
+      dispatch(openEditPostModal());
+    },
+    closeEditModal() {
+      dispatch(closeEditPostModal());
     },
   };
 }

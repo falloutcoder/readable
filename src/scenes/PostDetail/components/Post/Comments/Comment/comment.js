@@ -21,6 +21,72 @@ import EditIcon from 'react-icons/lib/fa/edit';
 import { formatTimeStamp } from '../../../../../../utils';
 import './comment.css';
 
+class CommentEditModal extends PureComponent {
+  static propTypes = {
+    comment: PropTypes.object,
+    update: PropTypes.func,
+    close: PropTypes.func,
+  };
+
+  submit = f => {
+    this.props.update(this.props.comment.id, {
+      author: f.target.author.value,
+      body: f.target.comment.value,
+    });
+    f.preventDefault();
+    this.props.close();
+  };
+
+  render() {
+    const { close, comment } = this.props;
+    return (
+      <Modal show={true} onHide={close} dialogClassName="custom-modal">
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-lg">
+            Add Comment To Post
+          </Modal.Title>
+        </Modal.Header>
+        <Form horizontal onSubmit={this.submit}>
+          <Modal.Body>
+            <FormGroup controlId="formHorizontalEmail">
+              <Col sm={2}>Author</Col>
+              <Col sm={8}>
+                <FormControl
+                  defaultValue={comment.author}
+                  name="author"
+                  type="text"
+                  placeholder="Author"
+                  required
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup controlId="formHorizontalPassword">
+              <Col sm={2}>Comment</Col>
+              <Col sm={8}>
+                <FormControl
+                  defaultValue={comment.body}
+                  name="comment"
+                  type="text"
+                  placeholder="Comment"
+                  required
+                />
+              </Col>
+            </FormGroup>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button bsStyle="danger" onClick={close}>
+              Close
+            </Button>
+            <Button bsStyle="success" type="submit">
+              Update
+            </Button>
+          </Modal.Footer>
+        </Form>
+      </Modal>
+    );
+  }
+}
+
 class CommentHeader extends PureComponent {
   static propTypes = {
     author: PropTypes.string,
@@ -85,15 +151,6 @@ class Comment extends PureComponent {
     isEditMode: PropTypes.bool,
   };
 
-  submit = f => {
-    this.props.update(this.props.comment.id, {
-      author: f.target.author.value,
-      body: f.target.comment.value,
-    });
-    f.preventDefault();
-    this.props.closeEditModal();
-  };
-
   render() {
     const {
       comment,
@@ -102,6 +159,7 @@ class Comment extends PureComponent {
       upVote,
       downVote,
       openEditModal,
+      update,
     } = this.props;
     return (
       <Panel
@@ -119,55 +177,14 @@ class Comment extends PureComponent {
         }
         bsStyle="default"
       >
+        {isEditMode && (
+          <CommentEditModal
+            comment={comment}
+            update={update}
+            close={closeEditModal}
+          />
+        )}
         {comment.body}
-
-        <Modal
-          show={isEditMode}
-          onHide={closeEditModal}
-          dialogClassName="custom-modal"
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-lg">
-              Add Comment To Post
-            </Modal.Title>
-          </Modal.Header>
-          <Form horizontal onSubmit={this.submit}>
-            <Modal.Body>
-              <FormGroup controlId="formHorizontalEmail">
-                <Col sm={2}>Author</Col>
-                <Col sm={8}>
-                  <FormControl
-                    defaultValue={comment.author}
-                    name="author"
-                    type="text"
-                    placeholder="Author"
-                    required
-                  />
-                </Col>
-              </FormGroup>
-              <FormGroup controlId="formHorizontalPassword">
-                <Col sm={2}>Comment</Col>
-                <Col sm={8}>
-                  <FormControl
-                    defaultValue={comment.body}
-                    name="comment"
-                    type="text"
-                    placeholder="Comment"
-                    required
-                  />
-                </Col>
-              </FormGroup>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button bsStyle="danger" onClick={closeEditModal}>
-                Close
-              </Button>
-              <Button bsStyle="success" type="submit">
-                Add
-              </Button>
-            </Modal.Footer>
-          </Form>
-        </Modal>
       </Panel>
     );
   }

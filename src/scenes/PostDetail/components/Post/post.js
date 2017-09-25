@@ -108,7 +108,7 @@ class PostEditModal extends PureComponent {
               Close
             </Button>
             <Button bsStyle="success" type="submit">
-              Add
+              Update
             </Button>
           </Modal.Footer>
         </Form>

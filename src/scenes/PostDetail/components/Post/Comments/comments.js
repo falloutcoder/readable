@@ -22,7 +22,7 @@ class Comments extends PureComponent {
         <div className="readable-post-comments-title">
           <span>Comments</span>
           <Sorter />
-          <AddComment />
+          <AddComment add={this.props.add} />
         </div>
         {this.props.comments.map(comment => (
           <Comment comment={comment} key={comment.id} />

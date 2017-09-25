@@ -1,4 +1,5 @@
 import { reducer as sorterReducer } from './Sorter/reducer';
+import { reducer as newCommentReducer } from './AddComment/reducer';
 import { LOAD_COMMENTS, ADD_COMMENT } from './actions';
 import {
   UP_VOTE_COMMENT,
@@ -27,6 +28,7 @@ const reducer = (state = {}, action) => {
   return {
     all: commentsReducer(state.all, action),
     sorter: sorterReducer(state.sorter, action),
+    showNewCommentModal: newCommentReducer(state.showNewCommentModal, action),
   };
 };
 

@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Row, Col, Alert } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Grid, Row, Col, Alert, Button } from 'react-bootstrap';
+import PlusIcon from 'react-icons/lib/fa/plus-square-o';
 import Sorter from './Sorter/sorterContainer';
 import Post from './Post/post';
 import './posts.css';
@@ -48,6 +50,11 @@ class Posts extends PureComponent {
           </Col>
           <Col xs={6} md={4}>
             <Sorter />
+            <Link to="/add_post">
+              <Button bsStyle="success">
+                Add Post <PlusIcon />
+              </Button>
+            </Link>
           </Col>
         </Row>
       </Grid>

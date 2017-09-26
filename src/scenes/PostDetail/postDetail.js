@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Header from '../../components/Header/header';
 import Post from './components/Post/postContainer';
 
-class PostDetail extends Component {
+class PostDetail extends PureComponent {
   render() {
     return (
       <div>

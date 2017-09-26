@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import store from './store';
 import Home from './scenes/Home/home';
 import PostDetail from './scenes/PostDetail/postDetail';
+import AddPost from './scenes/AddPost/addPostContainer';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/posts/:id" component={PostDetail} />
+            <Route path="/add_post" component={AddPost} />
           </Switch>
         </Router>
       </Provider>

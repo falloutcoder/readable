@@ -7,6 +7,7 @@ import {
   CLOSE_EDIT_POST_MODAL,
 } from '../../../../components/Post/actions';
 import { LOAD_ALL_POSTS, LOAD_ALL_POSTS_FOR_CATEGORY } from './actions';
+import { GET_COMMENTS_COUNT } from './Post/actions';
 import { reducer as sorterReducer } from './Sorter/reducer';
 
 const postsReducer = (state = [], action) => {
@@ -21,6 +22,11 @@ const postsReducer = (state = [], action) => {
       return state
         .filter(post => post.id !== action.payload.id)
         .concat(action.payload);
+    case GET_COMMENTS_COUNT:
+      const { count, id } = action.payload;
+      return state.map(
+        post => (post.id !== id ? post : { ...post, comments: count }),
+      );
     default:
       return state;
   }

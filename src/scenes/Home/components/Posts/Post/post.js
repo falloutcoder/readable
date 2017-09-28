@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Panel, ButtonGroup, Button } from 'react-bootstrap';
 import ThumbsUpIcon from 'react-icons/lib/fa/thumbs-o-up';
@@ -9,9 +10,11 @@ import UserIcon from 'react-icons/lib/fa/user';
 import CalendarIcon from 'react-icons/lib/fa/calendar';
 import TrashIcon from 'react-icons/lib/fa/trash-o';
 import EditIcon from 'react-icons/lib/fa/edit';
+import CommentsIcon from 'react-icons/lib/fa/comments-o';
 import PostContainer from '../../../../../components/Post/post';
 import PostEditModal from '../../../../../components/Post/postEditModal';
 import { formatTimeStamp } from '../../../../../utils';
+import { getCommentsCount } from './actions';
 import './post.css';
 
 class PostHeader extends PureComponent {
@@ -20,14 +23,20 @@ class PostHeader extends PureComponent {
     title: PropTypes.string,
     author: PropTypes.string,
     voteScore: PropTypes.number,
+    comments: PropTypes.number,
   };
+
+  static defaultProps = {
+    comments: 0,
+  };
+
   render() {
     return (
       <div className="readable-post__header">
         <Link to={`/posts/${this.props.id}`}>{this.props.title}</Link>
         <span className="pull-right">
-          <UserIcon /> {this.props.author}
-          <ThumbsUpIcon /> {this.props.voteScore}
+          <UserIcon /> {this.props.author} <ThumbsUpIcon />{' '}
+          {this.props.voteScore} <CommentsIcon /> {this.props.comments}
         </span>
       </div>
     );
@@ -66,6 +75,14 @@ class PostFooter extends PureComponent {
   }
 }
 
+function mapDispatchToProps(dispatch, ownprops) {
+  return {
+    getCommentsCount() {
+      dispatch(getCommentsCount(ownprops.post.id));
+    },
+  };
+}
+
 class Post extends PureComponent {
   static propTypes = {
     post: PropTypes.object,
@@ -76,7 +93,12 @@ class Post extends PureComponent {
     update: PropTypes.func,
     openEditModal: PropTypes.func,
     closeEditModal: PropTypes.func,
+    getCommentsCount: PropTypes.func,
   };
+
+  componentDidMount() {
+    this.props.getCommentsCount();
+  }
 
   render() {
     const post = this.props.post;
@@ -88,6 +110,7 @@ class Post extends PureComponent {
             id={post.id}
             voteScore={post.voteScore}
             author={post.author}
+            comments={post.comments}
           />
         }
         className="readable-post"
@@ -115,4 +138,4 @@ class Post extends PureComponent {
   }
 }
 
-export default PostContainer(Post);
+export default PostContainer(connect(null, mapDispatchToProps)(Post));

@@ -4,14 +4,15 @@ import { loadAllPosts, loadAllPostsForCategory } from './actions';
 import Posts from './posts';
 
 function mapStateToProps(state) {
-  const { all, sorter } = state.scenes.home.posts;
+  const { all, sorter, editPostModal } = state.scenes.home.posts;
   const posts = all.filter(post => !post.deleted);
   posts.sort(sortUtil(sorter.sortBy === 'date' ? 'timestamp' : 'voteScore'));
   if (sorter.sortOrder === 'descending') {
     posts.reverse();
   }
   return {
-    posts: posts
+    posts: posts,
+    editPostModal
   };
 }
 

@@ -23,8 +23,8 @@ function mapDispatchToProps(dispatch, ownProps) {
     update(body) {
       dispatch(updatePost(postId, body));
     },
-    openEditModal() {
-      dispatch(openEditPostModal());
+    openEditModal(id) {
+      dispatch(openEditPostModal(id));
     },
     closeEditModal() {
       dispatch(closeEditPostModal());

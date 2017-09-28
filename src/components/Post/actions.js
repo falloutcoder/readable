@@ -7,7 +7,7 @@ export const UPDATE_POST = 'UPDATE_POST';
 export const OPEN_EDIT_POST_MODAL = 'OPEN_EDIT_POST_MODAL';
 export const CLOSE_EDIT_POST_MODAL = 'CLOSE_EDIT_POST_MODAL';
 
-export const openEditPostModal = () => ({ type: OPEN_EDIT_POST_MODAL });
+export const openEditPostModal = (id) => ({ type: OPEN_EDIT_POST_MODAL, payload: id });
 export const closeEditPostModal = () => ({ type: CLOSE_EDIT_POST_MODAL });
 
 export const upVotePost = id => {

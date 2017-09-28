@@ -10,6 +10,7 @@ import './posts.css';
 class Posts extends PureComponent {
   static propTypes = {
     posts: PropTypes.array,
+    editPostModal: PropTypes.string,
     selectedCategory: PropTypes.string,
     loadPosts: PropTypes.func,
     loadPostsForCategory: PropTypes.func,
@@ -42,7 +43,7 @@ class Posts extends PureComponent {
             <ol className="readable-posts">
               {this.props.posts.map(post => (
                 <li key={post.id}>
-                  <Post post={post} />
+                  <Post post={post} editPostModal={this.props.editPostModal} />
                 </li>
               ))}
             </ol>

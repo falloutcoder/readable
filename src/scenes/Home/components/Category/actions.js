@@ -1,7 +1,6 @@
 import { getAllCategories } from './api';
 
 export const LOAD_ALL_CATEGORIES = 'LOAD_ALL_CATEGORIES';
-export const SELECT_CATEGORY = 'SELECT_CATEGORY';
 
 export const loadAllCategories = () => {
   return dispatch => {
@@ -10,7 +9,3 @@ export const loadAllCategories = () => {
     );
   };
 };
-export const selectCategory = index => ({
-  type: SELECT_CATEGORY,
-  payload: { index },
-});

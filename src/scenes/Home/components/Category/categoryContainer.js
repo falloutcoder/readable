@@ -1,21 +1,12 @@
 import { connect } from 'react-redux';
-import { loadAllCategories, selectCategory } from './actions';
+import { loadAllCategories } from './actions';
 import Header from './category';
 
 function mapStateToProps(state) {
-  const { all, selected } = state.scenes.home.categories;
-  return { categories: all, selected };
+  const categories = state.scenes.home.categories;
+  return { categories };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    loadCategories() {
-      dispatch(loadAllCategories());
-    },
-    selectCategory(index) {
-      dispatch(selectCategory(index));
-    },
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, { loadCategories: loadAllCategories })(
+  Header,
+);

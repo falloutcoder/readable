@@ -12,9 +12,9 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Switch>
-            <Route exact path="/" component={Home} />
             <Route path="/posts/:id" component={PostDetail} />
             <Route path="/add_post" component={AddPost} />
+            <Route path="/:category?" component={Home} />
           </Switch>
         </Router>
       </Provider>

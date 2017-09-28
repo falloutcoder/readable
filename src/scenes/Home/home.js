@@ -4,10 +4,14 @@ import Posts from './components/Posts/postsContainer';
 
 class App extends Component {
   render() {
+    const selectedCategory = this.props.match.params.category;
     return (
       <div className="App">
-        <Header />
-        <Posts />
+        <Header
+          selectedCategory={selectedCategory}
+          history={this.props.history}
+        />
+        <Posts selectedCategory={selectedCategory} />
       </div>
     );
   }

@@ -1,13 +1,9 @@
-import { LOAD_ALL_CATEGORIES, SELECT_CATEGORY } from './actions';
+import { LOAD_ALL_CATEGORIES } from './actions';
 
-const initialState = { all: [], selected: null };
-
-export const reducer = (state = initialState, action) => {
+export const reducer = (state = [], action) => {
   switch (action.type) {
     case LOAD_ALL_CATEGORIES:
-      return { selected: null, all: action.payload };
-    case SELECT_CATEGORY:
-      return { ...state, selected: action.payload.index };
+      return action.payload;
     default:
       return state;
   }

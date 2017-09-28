@@ -16,7 +16,12 @@ class Posts extends PureComponent {
   };
 
   componentDidMount() {
-    this.props.loadPosts();
+    const { selectedCategory } = this.props;
+    if (selectedCategory) {
+      this.props.loadPostsForCategory(selectedCategory);
+    } else {
+      this.props.loadPosts();
+    }
   }
 
   componentWillReceiveProps(nextProps) {

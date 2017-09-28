@@ -2,10 +2,10 @@ a.readable-header__title:hover {
   color: #fe3201 !important;
 }
 
-.readable-header__categories a:hover {
+.readable-header__categories a[role=button]:hover {
   border: 1px solid #fe3201 !important;
 }
 
-.readable-header__categories li.active a {
+.readable-header__categories li.active a[role=button] {
   color: #fe3201 !important;
 }

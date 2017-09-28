@@ -4,8 +4,6 @@ import { loadAllPosts, loadAllPostsForCategory } from './actions';
 import Posts from './posts';
 
 function mapStateToProps(state) {
-  const categories = state.scenes.home.categories;
-  const selectedCategory = categories.all[categories.selected];
   const { all, sorter } = state.scenes.home.posts;
   const posts = all.filter(post => !post.deleted);
   posts.sort(sortUtil(sorter.sortBy === 'date' ? 'timestamp' : 'voteScore'));
@@ -13,8 +11,7 @@ function mapStateToProps(state) {
     posts.reverse();
   }
   return {
-    posts: posts,
-    selectedCategory: selectedCategory && selectedCategory.name,
+    posts: posts
   };
 }
 

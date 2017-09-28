@@ -1,14 +1,12 @@
 import {
   DOWN_VOTE_POST,
   UP_VOTE_POST,
-} from '../../../../components/Post/actions';
-import {
-  LOAD_POST,
   DELETE_POST,
   UPDATE_POST,
   OPEN_EDIT_POST_MODAL,
   CLOSE_EDIT_POST_MODAL,
-} from './actions';
+} from '../../../../components/Post/actions';
+import { LOAD_POST } from './actions';
 import commentsReducer from './Comments/reducer';
 
 export const reducer = (state = {}, action) => {

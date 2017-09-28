@@ -7,6 +7,8 @@ import ThumbsUpDarkIcon from 'react-icons/lib/fa/thumbs-up';
 import ThumbsDownDarkIcon from 'react-icons/lib/fa/thumbs-down';
 import UserIcon from 'react-icons/lib/fa/user';
 import CalendarIcon from 'react-icons/lib/fa/calendar';
+import TrashIcon from 'react-icons/lib/fa/trash-o';
+import EditIcon from 'react-icons/lib/fa/edit';
 import PostContainer from '../../../../../components/Post/post';
 import { formatTimeStamp } from '../../../../../utils';
 import './post.css';
@@ -36,6 +38,8 @@ class PostFooter extends PureComponent {
     timestamp: PropTypes.number,
     upVote: PropTypes.func,
     downVote: PropTypes.func,
+    delete: PropTypes.func,
+    openEditModal: PropTypes.func,
   };
   render() {
     return (
@@ -48,6 +52,12 @@ class PostFooter extends PureComponent {
           <Button onClick={this.props.downVote}>
             <ThumbsDownDarkIcon />
           </Button>
+          <Button onClick={this.props.delete}>
+            <TrashIcon />
+          </Button>
+          <Button onClick={this.props.openEditModal}>
+            <EditIcon />
+          </Button>
         </ButtonGroup>
       </div>
     );
@@ -59,6 +69,10 @@ class Post extends PureComponent {
     post: PropTypes.object,
     upVote: PropTypes.func,
     downVote: PropTypes.func,
+    delete: PropTypes.func,
+    update: PropTypes.func,
+    openEditModal: PropTypes.func,
+    closeEditModal: PropTypes.func,
   };
 
   render() {
@@ -79,6 +93,8 @@ class Post extends PureComponent {
             timestamp={post.timestamp}
             upVote={this.props.upVote}
             downVote={this.props.downVote}
+            delete={this.props.delete}
+            openEditModal={this.props.openEditModal}
           />
         }
         bsStyle="default"
